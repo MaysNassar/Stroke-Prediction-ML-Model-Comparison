@@ -36,6 +36,12 @@ The standard accuracy metric is useless here. A naive model that predicts "no st
 Macro-recall = (recall_stroke + recall_no_stroke) / 2
 It treats both classes equally, forcing the model to catch strokes without being rewarded for simply predicting the majority class. In medical contexts, this is closer to the real cost structure: missing diagnoses matters.
 
+#### Prediction Latency
+
+Logistic Regression: 3-5ms per prediction
+Random Forest: 15-20ms per prediction
+KNN: 100+ ms per prediction (why KNN fails in production)
+
 ## The Recommendation
 ### **Random Forest wins**.
 It's not the fastest (LogReg is), but it's fast enough (15-20ms is workable in clinical systems). It achieves the highest recall on actual stroke cases—which is the point. You get feature importance for validation. The model size is acceptable.
